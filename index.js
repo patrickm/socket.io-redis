@@ -371,7 +371,7 @@ function adapter(uri, opts) {
 
         if (request.msgCount === request.numsub) {
           clearTimeout(request.timeout);
-          if (request.callback) process.nextTick(request.callback.bind(null, null, request.replies));
+          if (request.callback) process.nextTick(request.callback.bind(null, null, request.replies, {numsub: request.numsub}));
           delete self.requests[request.requestid];
         }
         break;
